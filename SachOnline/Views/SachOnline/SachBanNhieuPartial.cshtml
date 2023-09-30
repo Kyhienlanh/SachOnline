@@ -1,0 +1,112 @@
+﻿
+@model IEnumerable<SachOnline.Models.SACH>
+<!--<div style="display:flex" ;justify-content: space-between;">
+
+    <div class="media-object-default">
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object imgsachbannhieu"
+                         src="~/Images/TH004.jpg" alt="placeholder image">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Tên sản phẩm 1</h4>
+                Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm.
+            </div>
+        </div>
+
+
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object imgsachbannhieu"
+                         src="~/Images/TH005.jpg" alt="placeholder image">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Tên sản phẩm 1</h4>
+                Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm.
+            </div>
+        </div>
+
+
+
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object imgsachbannhieu"
+                         src="~/Images/TH006.jpg" alt="placeholder image">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Tên sản phẩm 1</h4>
+                Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm.
+            </div>
+        </div>
+    </div>
+
+    <div class="media-object-default">
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object imgsachbannhieu"
+                         src="~/Images/TH007.jpg" alt="placeholder image">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Tên sản phẩm 1</h4>
+                Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm.
+            </div>
+        </div>
+
+
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object imgsachbannhieu"
+                         src="~/Images/TH008.jpg" alt="placeholder image">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Tên sản phẩm 1</h4>
+                Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm. Mô tả chi tiết sản phẩm.
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+</div>
+    -->
+
+<div class="container">
+    <div class="row">
+        <h2 class="text-center">SÁCH BÁN NHIỀU</h2>
+    </div>
+
+    <div class="row">
+        @foreach (var sach in Model)
+        {
+            <div class="col-sm-4">
+                <div class="media" style="margin: 20px;">
+                    <div class="media-left" style="vertical-align: top;">
+                        <a href="#">
+                            <img class="media-object imgsachbannhieu"
+                                 src="~/Images/@sach.AnhBia" alt="placeholder image">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">@sach.TenSach</h4>
+                        <p style="margin-top: 0; font-size: 13px;">@sach.MoTa</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
