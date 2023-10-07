@@ -26,13 +26,16 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Người dùng<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Đăng ký</a></li>
+                    <li><a href="@Url.Action("DangKy", "User")"><span class="glyphicon glyphicon-user"></span> Đăng ký</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</a></li>
+                    <li><a href="@Url.Action("DangNhap", "User")"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng (0)</a>
+                <a href="@Url.Action("GioHangPartial", "GioHang")">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng (0)
+                </a>
+
             </li>
         </ul>
     </div>

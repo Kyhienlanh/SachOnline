@@ -12,7 +12,7 @@ namespace SachOnline.Controllers
     {
        
         private BookOnlineEntities db = new BookOnlineEntities();
-        
+
         [HttpPost]
         public ActionResult DangKy(FormCollection collection, KHACHHANG kh)
         {
@@ -23,7 +23,7 @@ namespace SachOnline.Controllers
             var sDiaChi = collection["DiaChi"];
             var sEmail = collection["Email"];
             var sDienThoai = collection["DienThoai"];
-            var dNgaySinh = String.Format("{0:MM/dd/yyyy", collection["NgaySinh"]);
+            var dNgaySinh = String.Format("{0:MM/dd/yyyy}", collection["NgaySinh"]);
             if (String.IsNullOrEmpty(sHoTen))
             {
                 ViewData["err1"] = "Họ tên không được rỗng";
@@ -69,8 +69,8 @@ namespace SachOnline.Controllers
                 kh.DiaChi = sDiaChi;
                 kh.DienThoai = sDienThoai;
                 kh.NgaySinh = DateTime.Parse(dNgaySinh);
-                db.KHACHHANGs.InsertOnSubmit(kh);
-                db.SubmitChanges();
+                db.KHACHHANGs.Add(kh);
+                db.SaveChanges();
                 return RedirectToAction("DangNhap");
             }
             return this.DangKy();
@@ -82,13 +82,13 @@ namespace SachOnline.Controllers
         {
             return View();
         }
-        /*
+      
                 [HttpGet]
                public ActionResult DangKy()
                {
                    return View();
                }
-               */
+               
 
         [HttpGet]
         public ActionResult DangNhap()
