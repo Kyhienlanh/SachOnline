@@ -10,7 +10,6 @@ namespace SachOnline.Controllers
     public class SachOnlineController : Controller
     {
         // GET: SachOnline
-      
         /// <summary>
         /// GetChuDe 
         /// </summary>
@@ -75,6 +74,23 @@ namespace SachOnline.Controllers
         public ActionResult NavPartial()
         {
             return PartialView();
+        }
+
+        public ActionResult SachTheoChuDe(int id)
+        {
+            var sach = from s in db.SACHes where s.MaCD == id select s;
+            return View(sach);
+        }
+
+        public ActionResult SachTheoNhaXuatBan(int id)
+        {
+            var item = from s in db.SACHes where s.MaNXB == id select s;
+            return View(item);
+        }
+        public ActionResult BookDetail (int id)
+        {
+            var sach = from s in db.SACHes where s.MaSach == id select s;
+            return View(sach.Single());
         }
     }
 }
