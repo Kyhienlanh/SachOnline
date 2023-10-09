@@ -124,5 +124,88 @@ namespace SachOnline.Controllers
             }
             return RedirectToAction("GioHang");
         }
+        public ActionResult Xoagiohang()
+        {
+            List<GioHang> lstGioHang = LayGioHang();
+            lstGioHang.Clear();
+            return RedirectToAction("Index", "SachOnline");
+        }
+        [HttpGet]
+        public ActionResult Dathang()
+        {
+            if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString()=="")
+            {
+                return RedirectToAction("DangNhap", "User");
+            }
+            if (Session["GioHang"] == null)
+            {
+                return RedirectToAction("Index", "SachOnline");
+            }
+            List<GioHang> lstGioHang = LayGioHang();
+            ViewBag.TongSoLuong = TongSoLuong();
+            ViewBag.TongTien = TongTien();
+            return View(lstGioHang);
+        }
+
+        [HttpPost]
+        public ActionResult Dathang(FormCollection f)
+        {
+            // Check if the user is logged in
+            if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
+            {
+                return RedirectToAction("DangNhap", "User");
+            }
+
+            // Check if the shopping cart is empty
+            if (Session["GioHang"] == null)
+            {
+                return RedirectToAction("Index", "SachOnline");
+            }
+
+            DONDATHANG ddh = new DONDATHANG();
+            KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
+            List<GioHang> lstGioHang = LayGioHang();
+            ddh.MaKH = kh.MaKH;
+            ddh.NgayDat = DateTime.Now;
+
+            // Correct date formatting and parsing
+            var NgayGiao = f["NgayGiao"];
+            DateTime ngayGiaoParsed;
+            if (DateTime.TryParse(NgayGiao, out ngayGiaoParsed))
+            {
+                ddh.NgayGiao = ngayGiaoParsed;
+            }
+            else
+            {
+                // Handle invalid date input gracefully, e.g., provide an error message.
+            }
+
+            ddh.TinhTrangGiaoHang = 1;
+            ddh.DaThanhToan = false;
+
+            db.DONDATHANGs.Add(ddh);
+            db.SaveChanges();
+
+            foreach (var item in lstGioHang)
+            {
+                CHITIETDATHANG ctdh = new CHITIETDATHANG();
+                ctdh.MaDonHang = ddh.MaDonHang;
+                ctdh.MaSach = item.iMaSach;
+                ctdh.SoLuong = item.iSoLuong;
+                ctdh.DonGia = (decimal)item.dDonGia;
+                db.CHITIETDATHANGs.Add(ctdh);
+            }
+
+            db.SaveChanges();
+            Session["GioHang"] = null;
+            return RedirectToAction("XacNhanDonHang", "GioHang");
+        }
+
+        public ActionResult XacNhanDonHang()
+        {
+            return View();
+        }
+
+
     }
 }

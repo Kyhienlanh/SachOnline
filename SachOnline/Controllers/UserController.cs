@@ -118,6 +118,7 @@ namespace SachOnline.Controllers
                 {
                     ViewBag.ThongBao = "Chúc mừng bạn đăng nhập thành công";
                     Session["TaiKhoan"] = kh;
+                    return RedirectToAction("GioHang","GioHang");
                 }
                 else
                 {
