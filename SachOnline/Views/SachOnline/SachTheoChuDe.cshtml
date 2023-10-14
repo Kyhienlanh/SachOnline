@@ -1,4 +1,6 @@
-﻿
+﻿@using SachOnline.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<SACH>
 @{
     ViewBag.Title = "SachTheoChuDe";
 }
@@ -13,7 +15,7 @@
                 <img src="~/Images/@sach.AnhBia" alt="@sach.TenSach" class="img- responsive img-rounded imgbook">
                 <div class="caption">
                     <h4 style="min-height:70px;">
-                        <a href="@Url.Action("BookDetail","SachOnline", new { id = sach.MaSach})">@sach.TenSach</a>
+                        <a href="@Url.Action("BookDetail", "SachOnline", new { id = sach.MaSach })">@sach.TenSach</a>
                     </h4>
                     <p>
                         <a href="#" class="btn btn-primary" role="button">
@@ -23,6 +25,19 @@
                 </div>
             </div>
         </div>
+       
     }
 </div>
+@* Display current page and total page count *@
+<p>Page @(Model.PageNumber) of @(Model.PageCount)</p>
+
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("SachTheoChuDe", new
+    {
+        iMaCD = ViewBag.MaCD,
+        page = page
+    }))
+</div>
+<br />
+
 

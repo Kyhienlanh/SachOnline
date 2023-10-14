@@ -5,6 +5,8 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using SachOnline.Models;
+using PagedList;
+using PagedList.Mvc;
 namespace SachOnline.Controllers
 {
     public class SachOnlineController : Controller
@@ -22,11 +24,21 @@ namespace SachOnline.Controllers
         }
 
       
-        public ActionResult Index()
+       /* public ActionResult Index()
         {
-            var listSachMoi = LaySachMoi(6);
+            var listSachMoi = LaySachMoi(20);
             return View(listSachMoi);
 
+        }*/
+        public ActionResult Index( int? page)
+        {
+           
+            int pageSize = 3;
+            int pageNumber = page ?? 1;
+            var listSachMoi = LaySachMoi(20);
+
+
+            return View(listSachMoi.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult ChuDePartial()
@@ -76,17 +88,40 @@ namespace SachOnline.Controllers
             return PartialView();
         }
 
-        public ActionResult SachTheoChuDe(int id)
+        public ActionResult SachTheoChuDe(int iMaCD, int? page)
         {
-            var sach = from s in db.SACHes where s.MaCD == id select s;
-            return View(sach);
+            ViewBag.MaCD = iMaCD;
+            int pageSize = 3;
+            int pageNumber = page ?? 1;
+
+            // Apply an OrderBy clause to ensure sorted input
+            var sach = from s in db.SACHes where s.MaCD == iMaCD orderby s.MaSach ascending select s;
+
+
+            // Continue with Skip and Take
+            return View(sach.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult SachTheoNhaXuatBan(int id)
+
+       /* public ActionResult SachTheoNhaXuatBan(int id)
         {
             var item = from s in db.SACHes where s.MaNXB == id select s;
             return View(item);
+        }*/
+        public ActionResult SachTheoNhaXuatBan(int iMaCD, int? page)
+        {
+            ViewBag.MaCD = iMaCD;
+            int pageSize = 3;
+            int pageNumber = page ?? 1;
+
+            // Apply an OrderBy clause to ensure sorted input
+            var sach = from s in db.SACHes where s.MaNXB ==iMaCD orderby s.MaSach ascending select s;
+
+
+            // Continue with Skip and Take
+            return View(sach.ToPagedList(pageNumber, pageSize));
         }
+
         public ActionResult BookDetail (int id)
         {
             var sach = from s in db.SACHes where s.MaSach == id select s;
