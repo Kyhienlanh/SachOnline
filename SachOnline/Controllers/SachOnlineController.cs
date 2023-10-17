@@ -85,6 +85,15 @@ namespace SachOnline.Controllers
         }
         public ActionResult NavPartial()
         {
+            if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
+            {
+                ViewBag.kHACHHANG = "Đăng ký";
+                ViewBag.DangXuat = "Đăng nhập";
+                return PartialView();
+            }
+            KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
+            ViewBag.kHACHHANG = "Xin chào "+kh.TaiKhoan;
+            ViewBag.DangXuat = "Đăng xuất";
             return PartialView();
         }
 
