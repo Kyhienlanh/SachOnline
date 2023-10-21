@@ -127,6 +127,11 @@ namespace SachOnline.Controllers
             }
             return DangNhap();
         }
-
+        public ActionResult logout()
+        {
+            Session["TaiKhoan"] = null;
+            return RedirectToAction("DangNhap");
+        }
+    
     }
 }

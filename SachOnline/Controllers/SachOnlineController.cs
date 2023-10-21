@@ -89,11 +89,15 @@ namespace SachOnline.Controllers
             {
                 ViewBag.kHACHHANG = "Đăng ký";
                 ViewBag.DangXuat = "Đăng nhập";
-                return PartialView();
+               
             }
-            KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
-            ViewBag.kHACHHANG = "Xin chào "+kh.TaiKhoan;
-            ViewBag.DangXuat = "Đăng xuất";
+            else
+            {
+                KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
+                ViewBag.kHACHHANG = "Xin chào " + kh.TaiKhoan;
+                ViewBag.DangXuat = "Đăng xuất";
+            }
+
             return PartialView();
         }
 
