@@ -24,6 +24,7 @@
             <li><a href="@Url.Action("DangKy", "User")"><span class="glyphicon glyphicon-user"></span> Đăng ký</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="@Url.Action("DangNhap", "User")"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</a></li>
+
         </ul>
     </li>
     -->
@@ -38,11 +39,17 @@
 
             <li><a href="@Url.Action("DangKy", "User")"><span class="glyphicon glyphicon-user"></span> @ViewBag.kHACHHANG</a></li>
             <li><a href="@Url.Action("DangNhap", "User")"><span class="glyphicon glyphicon-log-in"></span>@ViewBag.DangXuat</a></li>
+            <li><a href="@Url.Action("Logout", "SachOnline")">Đăng xuất</a></li>
+
+
+
             <li>
-                <a href="@Url.Action("GioHangPartial", "GioHang")">
-                    <span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng (0)
+                <a href="@Url.Action("GioHang", "GioHang")">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>Gio Hang
                 </a>
             </li>
+
+
         </ul>
     </div>
 </div>

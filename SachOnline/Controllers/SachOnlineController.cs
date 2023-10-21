@@ -89,13 +89,24 @@ namespace SachOnline.Controllers
             {
                 ViewBag.kHACHHANG = "Đăng ký";
                 ViewBag.DangXuat = "Đăng nhập";
-                return PartialView();
             }
-            KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
-            ViewBag.kHACHHANG = "Xin chào "+kh.TaiKhoan;
-            ViewBag.DangXuat = "Đăng xuất";
+            else
+            {
+                KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
+                ViewBag.kHACHHANG = "Xin chào " + kh.TaiKhoan;
+                
+            }
+
             return PartialView();
         }
+        public ActionResult Logout()
+        {
+            Session["TaiKhoan"] = null; // Clear the session
+            return RedirectToAction("Index", "SachOnline"); // Redirect to the home page or any other appropriate page
+        }
+
+
+
 
         public ActionResult SachTheoChuDe(int iMaCD, int? page)
         {
