@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xác nhận thông tin cần xóa</h2>
+<h3 style="color:red;">Bạn muốn xóa chủ đề này?</h3>
+
+<h4>Tên chủ đề : @Model.TenChuDe  </h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-actions no-color">
+        <input type="submit" value="XÓA" class="btn btn-default" /> |
+        @Html.ActionLink("VỀ TRANG QUẢN LÝ SÁCH", "Index")
+    </div>
+}
+
+
+

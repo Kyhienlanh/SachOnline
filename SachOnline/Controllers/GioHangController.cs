@@ -53,6 +53,7 @@ namespace SachOnline.Controllers
         private double TongSoLuong()
         {
             int iTongSoLuong = 0;
+            
             List<GioHang> lstGioHang = Session["GioHang"] as List<GioHang>;
             if (lstGioHang != null)
             {
@@ -81,14 +82,21 @@ namespace SachOnline.Controllers
             {
                 return RedirectToAction("Index", "SachOnline");
             }
+
+            int iTongSoLuong = 0;
+            iTongSoLuong++;
+
+
+
             ViewBag.TongSoLuong = TongSoLuong();
             ViewBag.TongTien = TongTien();
+            
             return View(lstGioHang);
         }
+        
 
         public ActionResult Index()
         {
-
             return View();
         }
 
@@ -205,6 +213,9 @@ namespace SachOnline.Controllers
         {
             return View();
         }
+       
+       
+         
 
 
     }

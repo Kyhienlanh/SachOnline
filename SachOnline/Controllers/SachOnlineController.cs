@@ -100,6 +100,11 @@ namespace SachOnline.Controllers
 
             return PartialView();
         }
+        public ActionResult Logout()
+        {
+            Session["TaiKhoan"] = null; // Clear the session
+            return RedirectToAction("Index", "SachOnline"); // Redirect to the home page or any other appropriate page
+        }
 
         public ActionResult SachTheoChuDe(int iMaCD, int? page)
         {
@@ -110,11 +115,9 @@ namespace SachOnline.Controllers
             // Apply an OrderBy clause to ensure sorted input
             var sach = from s in db.SACHes where s.MaCD == iMaCD orderby s.MaSach ascending select s;
 
-
             // Continue with Skip and Take
             return View(sach.ToPagedList(pageNumber, pageSize));
         }
-
 
        /* public ActionResult SachTheoNhaXuatBan(int id)
         {
@@ -129,7 +132,6 @@ namespace SachOnline.Controllers
 
             // Apply an OrderBy clause to ensure sorted input
             var sach = from s in db.SACHes where s.MaNXB ==iMaCD orderby s.MaSach ascending select s;
-
 
             // Continue with Skip and Take
             return View(sach.ToPagedList(pageNumber, pageSize));
