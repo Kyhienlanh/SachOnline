@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="77f6dbf1280544ccb995a45eeeb31c51" Name="Diagram1" ZoomLevel="95">
+      <Diagram DiagramId="b6e92c35b1844215ba839a5b4f24792c" Name="Diagram1">
         <EntityTypeShape EntityType="BookOnlineModel.ADMIN" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="BookOnlineModel.CHITIETDATHANG" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BookOnlineModel.CHUDE" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
@@ -12,6 +12,7 @@
         <EntityTypeShape EntityType="BookOnlineModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BookOnlineModel.NHAXUATBAN" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BookOnlineModel.SACH" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookOnlineModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="BookOnlineModel.TACGIA" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BookOnlineModel.VIETSACH" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="BookOnlineModel.FK_CTDH_DDH" ManuallyRouted="false" />

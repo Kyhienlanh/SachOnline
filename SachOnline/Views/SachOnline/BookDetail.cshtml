@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "BookDetail";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 <style>
     .giaban{
@@ -20,9 +21,11 @@
     <div style="text-align:center">
         <img src="~/Images/@Model.AnhBia" alt="@Model.TenSach">
         <div class="motasach">
-            <p>
-                @Html.Raw(@Model.MoTa.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp")))
-            </p>
+            var moTaHtml = @Html.Raw(Model?.MoTa?.ToString()?.Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp") ?? "Không có mô tả");
+           
+
+
+
 
         </div>
         <p class="ngaycapnhat">Ngày cập nhật: @Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}")</p>

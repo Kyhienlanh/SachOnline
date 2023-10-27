@@ -147,5 +147,6 @@ namespace SachOnline.Controllers
             var sach = from s in db.SACHes where s.MaSach == id select s;
             return View(sach.Single());
         }
+       
     }
 }

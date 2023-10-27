@@ -1,0 +1,164 @@
+﻿@model SachOnline.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    /* Container style */
+    .delete-container {
+        width: 60%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    /* Title style */
+    .delete-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    /* Description style */
+    .delete-description {
+        font-size: 18px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    /* Data list style */
+    /* Style for dt elements */
+    .dl-horizontal dt {
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px; /* Add some spacing below each dt */
+    }
+
+    /* Style for dd elements */
+    .dl-horizontal dd {
+        color: #555;
+        margin-left: 0; /* Remove the default left margin */
+        margin-bottom: 15px; /* Add spacing below each dd */
+    }
+
+
+    /* Form actions style */
+    .form-actions {
+        margin-top: 20px;
+    }
+
+    /* Delete button style */
+    .btn-delete {
+        background-color: #d9534f;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        .btn-delete:hover {
+            background-color: #c9302c;
+        }
+
+    /* Back link style */
+    .btn-back {
+        text-decoration: none;
+        margin-left: 10px;
+        color: #0073e6;
+        font-weight: bold;
+    }
+</style>
+
+
+<div class="delete-container">
+    <h2 class="delete-title">Xóa</h2>
+
+    <h3 class="delete-description">Bạn có muốn xóa khách hàng này?</h3>
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.MaKH)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaKH)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HoTen)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TaiKhoan)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TaiKhoan)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MatKhau)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MatKhau)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DiaChi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DiaChi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DienThoai)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DienThoai)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NgaySinh)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgaySinh)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-delete" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>

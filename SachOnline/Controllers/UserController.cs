@@ -102,10 +102,10 @@ namespace SachOnline.Controllers
         {
             var sTenDN = collection["TenDN"];
             var sMatKhau = collection["MatKhau"];
-            if (String.IsNullOrEmpty(sMatKhau))
-            {
-                ViewData["err1"] = "Bạn chưa nhập tên đăng nhập";
 
+            if (String.IsNullOrEmpty(sTenDN))
+            {
+                ViewData["Err1"] = "Bạn chưa nhập tên đăng nhập";
             }
             else if (String.IsNullOrEmpty(sMatKhau))
             {
@@ -113,20 +113,34 @@ namespace SachOnline.Controllers
             }
             else
             {
+                // Kiểm tra đăng nhập của khách hàng
                 KHACHHANG kh = db.KHACHHANGs.SingleOrDefault(n => n.TaiKhoan == sTenDN && n.MatKhau == sMatKhau);
+                ADMIN ADMIN = db.ADMINs.SingleOrDefault(n => n.TenDN == sTenDN && n.MatKhau == sMatKhau);
+
                 if (kh != null)
                 {
-                    ViewBag.ThongBao = "Chúc mừng bạn đăng nhập thành công";
+                    ViewBag.ThongBao = "Chúc mừng bạn đã đăng nhập thành công";
                     Session["TaiKhoan"] = kh;
-                    return RedirectToAction("GioHang","GioHang");
+
+                        return RedirectToAction("GioHang", "GioHang");
+                  
                 }
                 else
                 {
-                    ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng";
+                    if (ADMIN != null)
+                    {
+                        ViewBag.ThongBao = "Chúc mừng bạn đã đăng nhập thành công";
+                        Session["TaiKhoan"] = kh;
+                        return RedirectToAction("Index", "Sach", new { area = "Admin" });
+
+
+                    }
                 }
             }
-            return DangNhap();
+
+            return View("DangNhap"); // Trả về trang đăng nhập
         }
+
 
     }
 }

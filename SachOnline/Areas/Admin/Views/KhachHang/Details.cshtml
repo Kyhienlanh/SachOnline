@@ -1,0 +1,123 @@
+﻿@model SachOnline.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .custom-dt {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .custom-dd {
+        color: #555;
+    }
+
+    /* CSS tùy chỉnh */
+    h2 {
+        color: #007bff; /* Màu chữ mặc định cho tiêu đề h2 */
+    }
+
+    dl.dl-horizontal dt {
+        font-weight: bold;
+        color: #333; /* Màu chữ cho các thành phần dt */
+    }
+
+    dl.dl-horizontal dd {
+        color: #555; /* Màu chữ cho các thành phần dd */
+    }
+</style>
+
+<h2>CHI TIẾT KHÁCH HÀNG</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt class="custom-dt">
+            @Html.DisplayNameFor(model => model.MaKH)
+        </dt>
+        <dd class="custom-dd">
+            @Html.DisplayFor(model => model.MaKH)
+        </dd>
+
+        <dt class="custom-dt">
+            @Html.DisplayNameFor(model => model.HoTen)
+        </dt>
+        <dd class="custom-dd">
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt class="custom-dt">
+            @Html.DisplayNameFor(model => model.TaiKhoan)
+        </dt>
+        <dd class="custom-dd">
+            @Html.DisplayFor(model => model.TaiKhoan)
+        </dd>
+
+        <dt class="custom-dt">
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </dt>
+        <dd class="custom-dd">
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+        <dt class="custom-dt">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="custom-dd">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt class="custom-dt">
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+        <dd class="custom-dd">
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt class="custom-dt">
+            @Html.DisplayNameFor(model => model.DienThoai)
+        </dt>
+        <dd class="custom-dd">
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+
+        <dt class="custom-dt">
+            @Html.DisplayNameFor(model => model.NgaySinh)
+        </dt>
+        <dd class="custom-dd">
+            @Html.DisplayFor(model => model.NgaySinh)
+        </dd>
+
+
+        <!-- Các phần còn lại giữ nguyên như trong đoạn code ban đầu -->
+    </dl>
+</div>
+
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
