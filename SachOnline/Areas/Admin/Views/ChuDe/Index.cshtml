@@ -1,0 +1,82 @@
+﻿@using PagedList.Mvc
+@using SachOnline.Models
+@model PagedList.PagedList<SachOnline.Models.CHUDE>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    /* Define your CSS styles here */
+    .table table-bordered {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #f5f5f5;
+        }
+
+    .btn {
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        color: #333;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .pager {
+        margin-top: 20px;
+    }
+</style>
+
+<h2>THÊM CHỦ ĐỀ</h2>
+<p>
+    @Html.ActionLink("Thêm mới chủ đề", "Create")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Tên chủ đề
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenChuDe)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.MaCD })" class="btn btn-warning" role="button">Sửa</a>
+                <a href="@Url.Action("Delete", new { id = item.MaCD })" class="btn btn-danger" role="button">Xóa</a>
+            </td>
+        </tr>
+    }
+</table>
+<div class="pager" style="text-align: center;">
+    @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+</div>
+
+<div class="pager" style="text-align: center;">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>

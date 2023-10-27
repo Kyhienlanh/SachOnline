@@ -1,0 +1,82 @@
+﻿@model SachOnline.Models.NHAXUATBAN
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    /* Style for the main container */
+    .container {
+        margin: 20px;
+    }
+
+    /* Style for the title */
+    h2 {
+        font-size: 24px;
+        color: #333;
+    }
+
+    /* Style for the confirmation message */
+    h3 {
+        font-size: 18px;
+        color: #666;
+        margin-top: 10px;
+    }
+
+    /* Style for the data display */
+    .dl-horizontal {
+        font-size: 16px;
+        color: #333;
+    }
+
+    /* Style for the delete button */
+    input[type="submit"] {
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+
+    /* Style for the "Back to List" link */
+    .btn-default {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        margin-top: 20px;
+        text-decoration: none;
+    }
+</style>
+
+<div class="container">
+    <h2>XÓA</h2>
+    <h3>Bạn có muốn xóa nhà xuất bản này?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>@Html.DisplayNameFor(model => model.MaNXB)</dt>
+            <dd>@Html.DisplayFor(model => model.MaNXB)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.TenNXB)</dt>
+            <dd>@Html.DisplayFor(model => model.TenNXB)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.DiaChi)</dt>
+            <dd>@Html.DisplayFor(model => model.DiaChi)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.DienThoai)</dt>
+            <dd>@Html.DisplayFor(model => model.DienThoai)</dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" /> |
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn-default" })
+            </div>
+        }
+    </div>
+</div>

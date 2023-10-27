@@ -2,7 +2,8 @@
 @using PagedList.Mvc;
 @model PagedList.PagedList<SACH>
 @{
-    ViewBag.Title = "SachTheoChuDe";
+    ViewBag.Title = "SachTheoChuDe"; Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
 }
 
 <h2 class="text-center">SÁCH THEO CHỦ ĐỀ</h2>
@@ -18,7 +19,8 @@
                         <a href="@Url.Action("BookDetail", "SachOnline", new { id = sach.MaSach })">@sach.TenSach</a>
                     </h4>
                     <p>
-                        <a href="#" class="btn btn-primary" role="button">
+                        <a href="@Url.Action("ThemGioHang","GioHang", new { ms = sach.MaSach, url =
+Request.Url.ToString() })" class="btn btn-primary" role="button">
                             <span class="glyphicon glyphicon-shopping-cart" aria- hidden="true"></span> Add to Cart
                         </a>
                     </p>
